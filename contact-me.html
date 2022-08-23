@@ -73,7 +73,7 @@
         From: "opacity-100 scale-100"
         To: "opacity-0 scale-95"
     -->
-        <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <div class="absolute z-50 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div class="pt-5 pb-6 px-5">
                     <div class="flex items-center justify-between">
@@ -185,11 +185,11 @@
             </svg>
             <div class="text-center">
                 <div class="flex items-center justify-center gap-8">
-                    <hr class="w-48 h-2 rounded-full bg-black" />
-                    <div class="text-center text-4xl font-extrabold">
+                    <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+                    <div class="text-center text-2xl md:text-4xl font-extrabold">
                         <p>Contact Me</p>
                     </div>
-                    <hr class="w-48 h-2 rounded-full bg-black" />
+                    <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
                 </div>
                 <p class="mt-4 text-lg leading-6 text-gray-500">Want to talk? Send me a message and I'll get back to you
                     in 2 day's time</p>
@@ -254,28 +254,28 @@
 
     <section class="contact-me lg:px-24 md:px-24 px-6 mt-24 flex flex-col items-center justify-center gap-5">
         <div class="flex items-center justify-center gap-8">
-            <hr class="w-48 h-2 rounded-full bg-black" />
-            <div class="text-center text-4xl font-extrabold">
+            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
+            <div class="text-center text-2xl md:text-4xl font-extrabold">
                 <p>Or</p>
             </div>
-            <hr class="w-48 h-2 rounded-full bg-black" />
+            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
         </div>
         <div class="details flex flex-col justify-center items-center gap-3">
             <div class="flex gap-4 items-center">
-                <img src="images/gmail-icon.svg" class="h-8 w-8" alt="">
-                <p class="font-light text-lg">prannaykedia1@gmail.com</p>
+                <img src="images/gmail-icon.svg" class="h-6 w-6 md:h-8 md:w-8" alt="">
+                <p class="font-light text-md md:text-lg">prannaykedia1@gmail.com</p>
             </div>
             <div class="flex gap-4 items-center">
-                <img src="images/phone-icon.svg" alt="" class="h-8 w-8">
-                <p class="font-light text-lg">+91 85840 11454</p>
+                <img src="images/phone-icon.svg" alt="" class="h-6 w-6 md:h-8 md:w-8">
+                <p class="font-light text-md md:text-lg">+91 85840 11454</p>
             </div>
         </div>
     </section>
 
-    <footer class="max-w-7xl px-4 sm:px-6 mt-24">
+    <footer class="max-w-7xl px-4 sm:px-6 mt-16 md:mt-24">
         <div class="flex flex-col items-center justify-center border-y">
             <div class="me flex flex-row items-center gap-48 py-6">
-                <div class="details">
+                <div class="details hidden md:inline-block">
                     <div class="flex gap-4 items-center">
                         <img src="images/gmail-icon.svg" class="h-6 w-6" alt="">
                         <p class="font-light text-sm">prannaykedia1@gmail.com</p>
@@ -288,7 +288,7 @@
                 <div class="pk font-extrabold text-5xl">
                     <h1>PK</h1>
                 </div>
-                <div class="flex items-center gap-5 social-media-links text-3xl">
+                <div class="flex items-center gap-5 hidden md:inline-block social-media-links text-3xl">
                     <a href="" class="hover:text-indigo-600">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>

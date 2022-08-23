@@ -73,7 +73,7 @@
         From: "opacity-100 scale-100"
         To: "opacity-0 scale-95"
     -->
-        <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <div class="absolute z-50 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div class="pt-5 pb-6 px-5">
                     <div class="flex items-center justify-between">
@@ -163,11 +163,11 @@
 
     <section class="heading flex flex-col items-center justify-center mt-12">
         <div class="flex items-center justify-center gap-8">
-            <hr class="w-48 h-2 rounded-full bg-black" />
+            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
             <div class="text-center text-4xl font-extrabold">
                 <p>About Me</p>
             </div>
-            <hr class="w-48 h-2 rounded-full bg-black" />
+            <hr class="w-12 md:w-48 h-2 rounded-full bg-black" />
         </div>
     </section>
 
@@ -496,10 +496,10 @@
         </div>
     </main>
 
-    <footer class="max-w-7xl px-4 sm:px-6 mt-24">
+    <footer class="max-w-7xl px-4 sm:px-6 mt-16 md:mt-24">
         <div class="flex flex-col items-center justify-center border-y">
             <div class="me flex flex-row items-center gap-48 py-6">
-                <div class="details">
+                <div class="details hidden md:inline-block">
                     <div class="flex gap-4 items-center">
                         <img src="images/gmail-icon.svg" class="h-6 w-6" alt="">
                         <p class="font-light text-sm">prannaykedia1@gmail.com</p>
@@ -512,7 +512,7 @@
                 <div class="pk font-extrabold text-5xl">
                     <h1>PK</h1>
                 </div>
-                <div class="flex items-center gap-5 social-media-links text-3xl">
+                <div class="flex items-center gap-5 hidden md:inline-block social-media-links text-3xl">
                     <a href="" class="hover:text-indigo-600">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
