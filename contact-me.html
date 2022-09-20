@@ -192,13 +192,12 @@
             <div class="mt-12">
                 <form name="contact" method="POST" action="/contact-me-success"
                     class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8" data-netlify="true">
-                    <!-- <input type="hidden" name="subject" value="Contacted Me from Personal Website" /> -->
                     <div>
                         <label for="first-name" class="block text-sm font-medium text-gray-700">First name <span
                                 class="text-red-700">*</span></label>
                         <div class="mt-1">
                             <input required type="text" name="first-name" id="first-name" autocomplete="given-name"
-                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                class="py-3 px-4 block w-full bg-transparent shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-400 rounded-md">
                         </div>
                     </div>
                     <div>
@@ -206,14 +205,14 @@
                                 class="text-red-700">*</span></label>
                         <div class="mt-1">
                             <input required type="text" name="last-name" id="last-name" autocomplete="family-name"
-                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent border-gray-400 rounded-md">
                         </div>
                     </div>
                     <div class="sm:col-span-2">
                         <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
                         <div class="mt-1">
                             <input type="text" name="company" id="company" autocomplete="organization"
-                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent border-gray-400 rounded-md">
                         </div>
                     </div>
                     <div class="sm:col-span-2">
@@ -221,14 +220,14 @@
                                 class="text-red-700">*</span></label>
                         <div class="mt-1">
                             <input required id="email" name="email" type="email" autocomplete="email"
-                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-transparent border-gray-400 rounded-md">
                         </div>
                     </div>
                     <div class="sm:col-span-2">
                         <label for="phone-number" class="block text-sm font-medium text-gray-700">Phone Number</label>
                         <div class="mt-1 relative rounded-md shadow-sm">
                             <input type="text" name="phone-number" id="phone-number" autocomplete="tel"
-                                class="py-3 px-4 block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md">
+                                class="py-3 px-4 block w-full focus:ring-indigo-500 focus:border-indigo-500 bg-transparent border-gray-400 rounded-md">
                         </div>
                     </div>
                     <div class="sm:col-span-2">
@@ -236,7 +235,7 @@
                                 class="text-red-700">*</span></label>
                         <div class="mt-1">
                             <textarea required id="message" name="message" rows="4"
-                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 rounded-md"></textarea>
+                                class="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border bg-transparent border-gray-4000 rounded-md"></textarea>
                         </div>
                     </div>
                     <div class="sm:col-span-2">
@@ -285,7 +284,7 @@
                 <div class="pk font-extrabold text-5xl">
                     <h1>PK</h1>
                 </div>
-                <div class="flex items-center gap-5 hidden md:inline-block social-media-links text-3xl">
+                <div class="hidden items-center gap-5 md:flex social-media-links text-3xl">
                     <a href="https://linkedin.com/in/prannay-kedia" class="hover:text-indigo-600">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
