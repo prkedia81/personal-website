@@ -166,91 +166,17 @@
         </div>
     </section>
 
-    <a href=""
-        class="latest-blog flex flex-col md:flex-row items-center lg:px-24 md:px-24 px-6 mt-12 md:mt-20 gap-3 md:gap-12">
-        <img src="images/blog-image.svg" class="md:w-1/2 hover:shadow-xl" alt="">
-        <div class="md:w-1/2 flex flex-col text-center md:text-start gap-2 md:gap-6">
-            <p class="text-gray-500 text-xs font-normal md:font-medium md:text-sm">March 25, 2022</p>
-            <h2 class="text-xl md:text-4xl font-bold">I is Write Blog which is Multiline</h2>
-            <p class="font-light text-xs text-clip overflow-hidden max-h-24 md:max-h-fit md:text-base">Lorem
-                ipsum dolor sit amet, consectetur
-                adipiscing
-                elit.
-                Curabitur
-                molestie mi
-                elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                molestie mi
-                elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                molestie mi
-                elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                molestie mi
-                elit</p>
-        </div>
-    </a>
+    <section id="empty-state" class="hidden flex flex-col items-center justify-center">
+        <img src="images/blog-coming-soon.svg" alt="" class="w-1/2">
+        <h3 class="text-center text-2xl md:text-3xl font-bold">Coming <br class="md:hidden">Soon....</h3>
+    </section>
+
+    <section id="latest-blog">
+    </section>
 
     <!-- Card System -->
-    <section
-        class="blogs grid grid-col-1 md:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-16 lg:px-24 md:px-24 px-6 mt-12 md:mt-16 justify-start">
-        <a href="" class="flex flex-col gap-4">
-            <img src="images/blog-image.svg" class="w-76 h-auto rounded-xl card hover:shadow-xl" alt="">
-            <div class="pl-1 text-center md:text-start">
-                <p class="text-gray-500 font-normal md:font-medium text-xs">March 25, 2022</p>
-                <h2 class="text-xl font-bold pt-2">I is Write Blog which is Multiline</h2>
-                <p class="font-light text-xs pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elitLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elit</p>
-            </div>
-        </a>
-        <a href="" class="flex flex-col gap-4">
-            <img src="images/blog-image.svg" class="w-76 h-auto rounded-xl card hover:shadow-xl" alt="">
-            <div class="pl-1 text-center md:text-start">
-                <p class="text-gray-500 font-normal md:font-medium text-xs">March 25, 2022</p>
-                <h2 class="text-xl font-bold pt-2">I is Write Blog</h2>
-                <p class="font-light text-xs pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elitLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elit</p>
-            </div>
-        </a>
-        <a href="" class="flex flex-col gap-4">
-            <img src="images/blog-image.svg" class="w-76 h-auto rounded-xl card hover:shadow-xl" alt="">
-            <div class="pl-1 text-center md:text-start">
-                <p class="text-gray-500 font-normal md:font-medium text-xs">March 25, 2022</p>
-                <h2 class="text-xl font-bold pt-2">I is Write Blog</h2>
-                <p class="font-light text-xs pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elitLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elit</p>
-            </div>
-        </a>
-        <a href="" class="flex flex-col gap-4">
-            <img src="images/blog-image.svg" class="w-76 h-auto rounded-xl card hover:shadow-xl" alt="">
-            <div class="pl-1 text-center md:text-start">
-                <p class="text-gray-500 font-normal md:font-medium text-xs">March 25, 2022</p>
-                <h2 class="text-xl font-bold pt-2">I is Write Blog</h2>
-                <p class="font-light text-xs pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elitLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elit</p>
-            </div>
-        </a>
-        <a href="" class="flex flex-col gap-4">
-            <img src="images/blog-image.svg" class="w-76 h-auto rounded-xl card hover:shadow-xl" alt="">
-            <div class="pl-1 text-center md:text-start">
-                <p class="text-gray-500 font-normal md:font-medium text-xs">March 25, 2022</p>
-                <h2 class="text-xl font-bold pt-2">I is Write Blog which is Multiline</h2>
-                <p class="font-light text-xs pt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elitLorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                    molestie mi
-                    elit</p>
-            </div>
-        </a>
+    <section id="blogs"
+        class="grid grid-col-1 md:grid-cols-3 gap-x-10 gap-y-12 md:gap-y-16 lg:px-24 md:px-24 px-6 mt-12 md:mt-16 justify-start">
     </section>
 
     <footer class="max-w-7xl px-4 sm:px-6 mt-16 md:mt-24">
@@ -287,7 +213,8 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/blogs.js"></script>
 </body>
 
 </html>
