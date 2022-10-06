@@ -17,14 +17,19 @@ function getBlog(id) {
         .then((res) => res.json())
         .then((response) => {
             let blog = response.data[id - 1];
-            // Generate Blog Header
-            const blogHeader = document.getElementById("blog-header");
-            blogHeader.appendChild(createBlogHeader(blog));
+            if (blog == null) {
+                return;
+            } else {
+                // Generate Blog Header
+                document.getElementById('empty-state').classList.add('hidden');
+                const blogHeader = document.getElementById("blog-header");
+                blogHeader.appendChild(createBlogHeader(blog));
 
-            // Generate Blog Content
-            const blogBody = document.getElementById("blog-content");
-            blogBody.appendChild(createBlogBody(blog));
-            formatBlogBody(blogBody);
+                // Generate Blog Content
+                const blogBody = document.getElementById("blog-content");
+                blogBody.appendChild(createBlogBody(blog));
+                formatBlogBody(blogBody);
+            }
         })
         .catch((err) => console.error(err));
 }
