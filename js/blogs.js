@@ -10,6 +10,7 @@ function fetchBlogs() {
         document.getElementById('empty-state').classList.remove('hidden');
         return;
       }
+      document.getElementById('empty-state').classList.add('hidden');
       let latestBlog = blogs[blogs.length - 1];
       let blogList = document.getElementById("blogs");
       blogs.forEach((blog) => {
