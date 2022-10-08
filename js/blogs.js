@@ -1,4 +1,23 @@
-function fetchBlogs() {
+const GET_USER_ARTICLES = `
+query GetUserArticles($page: Int) {
+    user(username: "prannay") {
+        publication {
+            posts(page: $page) {
+                title
+                brief
+                contentMarkdown
+                dateAdded
+                coverImage
+                slug
+            }
+        }
+    }
+}
+`;
+
+// $page -> Pagination
+
+function fetchStrapiBlogs() {
   const apiURL = "http://localhost:1337/api/blogs?populate=coverImage";
   const blogsReq = new Request(apiURL);
 
@@ -7,10 +26,10 @@ function fetchBlogs() {
     .then((response) => {
       let blogs = response.data;
       if (blogs.length == 0) {
-        document.getElementById('empty-state').classList.remove('hidden');
+        document.getElementById("empty-state").classList.remove("hidden");
         return;
       }
-      document.getElementById('empty-state').classList.add('hidden');
+      document.getElementById("empty-state").classList.add("hidden");
       let latestBlog = blogs[blogs.length - 1];
       let blogList = document.getElementById("blogs");
       blogs.forEach((blog) => {
@@ -28,7 +47,49 @@ function fetchBlogs() {
     .catch((err) => console.error(err));
 }
 
-function createBlogCard(blog) {
+function fetchBlogs() {
+  async function gql(query, variables = {}) {
+    const data = await fetch("https://api.hashnode.com/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    });
+
+    return data.json();
+  }
+
+  gql(GET_USER_ARTICLES, { page: 0 }).then((result) => {
+    const blogs = result.data.user.publication.posts;
+    if (blogs.length == 0) {
+      document.getElementById("empty-state").classList.remove("hidden");
+      return;
+    }
+
+    document.getElementById("empty-state").classList.add("hidden");
+    let latestBlog = blogs[0];
+    let blogList = document.getElementById("blogs");
+    blogs.forEach((blog, id) => {
+      if (blog === latestBlog) {
+        // make latest blog card
+        document
+          .getElementById("latest-blog")
+          .appendChild(createLatestBlog(blog, id));
+      } else {
+        // make old blog cards
+        blogList.appendChild(createBlogCard(blog, id));
+      }
+    });
+  });
+
+  const tokenID = "990dd990-5df5-4420-8134-6833115cbe07";
+}
+
+function createBlogCard(blog, id) {
   const cardClasses = ["flex", "flex-col", "gap-4"];
   const imgClasses = [
     "aspect-video",
@@ -49,19 +110,19 @@ function createBlogCard(blog) {
   const descClasses = ["font-light", "text-xs", "pt-1"];
 
   let card = document.createElement("a");
-  card.href = `/blog.html?id=${blog.id}`;
+  card.href = `/blog.html?id=${id}`;
   card.classList.add(...cardClasses);
 
   let coverImage = document.createElement("img");
   coverImage.classList.add(...imgClasses);
-  coverImage.src = `http://localhost:1337${blog.attributes.coverImage.data.attributes.formats.large.url}`;
+  coverImage.src = blog.coverImage;
 
   let cardBody = document.createElement("div");
   cardBody.classList.add(...cardBodyClasses);
 
   let blogDate = document.createElement("p");
   blogDate.classList.add(...dateClasses);
-  blogDate.innerHTML = new Date(blog.attributes.createdAt).toLocaleDateString(
+  blogDate.innerHTML = new Date(blog.dateAdded).toLocaleDateString(
     undefined,
     (options = {
       year: "numeric",
@@ -72,11 +133,11 @@ function createBlogCard(blog) {
 
   let blogTitle = document.createElement("h2");
   blogTitle.classList.add(...titleClasses);
-  blogTitle.innerHTML = blog.attributes.title;
+  blogTitle.innerHTML = blog.title;
 
   let blogDescription = document.createElement("p");
   blogDescription.classList.add(...descClasses);
-  blogDescription.innerHTML = blog.attributes.description;
+  blogDescription.innerHTML = blog.brief;
 
   const cardBodyElements = [blogDate, blogTitle, blogDescription];
   cardBody.append(...cardBodyElements);
@@ -134,19 +195,19 @@ function createLatestBlog(blog) {
   ];
 
   let card = document.createElement("a");
-  card.href = `/blog.html?id=${blog.id}`;
+  card.href = `/blog.html?id=${0}`;
   card.classList.add(...cardClasses);
 
   let coverImage = document.createElement("img");
   coverImage.classList.add(...imgClasses);
-  coverImage.src = `http://localhost:1337${blog.attributes.coverImage.data.attributes.formats.large.url}`;
+  coverImage.src = blog.coverImage;
 
   let cardBody = document.createElement("div");
   cardBody.classList.add(...cardBodyClasses);
 
   let blogDate = document.createElement("p");
   blogDate.classList.add(...dateClasses);
-  blogDate.innerHTML = new Date(blog.attributes.createdAt).toLocaleDateString(
+  blogDate.innerHTML = new Date(blog.dateAdded).toLocaleDateString(
     undefined,
     (options = {
       year: "numeric",
@@ -157,11 +218,11 @@ function createLatestBlog(blog) {
 
   let blogTitle = document.createElement("h2");
   blogTitle.classList.add(...titleClasses);
-  blogTitle.innerHTML = blog.attributes.title;
+  blogTitle.innerHTML = blog.title;
 
   let blogDescription = document.createElement("p");
   blogDescription.classList.add(...descClasses);
-  blogDescription.innerHTML = blog.attributes.description;
+  blogDescription.innerHTML = blog.brief;
 
   const cardBodyElements = [blogDate, blogTitle, blogDescription];
   cardBody.append(...cardBodyElements);
@@ -170,8 +231,5 @@ function createLatestBlog(blog) {
   return card;
 }
 
-function redirectToBlog(id) {
-  window.location.href = `/blog.html?id=${id}`;
-}
-
+// fetchStrapiBlogs();
 fetchBlogs();
