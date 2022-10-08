@@ -1,35 +1,16 @@
-const GET_USER_ARTICLES = `
-query GetUserArticles($page: Int) {
-    user(username: "prannay") {
-        publication {
-            posts(page: $page) {
-                title
-                brief
-                contentMarkdown
-                dateAdded
-                coverImage
-                slug
-            }
-        }
-    }
-}
-`;
-
 function checkForBlog() {
   const urlParams = new URLSearchParams(window.location.search);
   const blogId = urlParams.get("id");
-  document.getElementById("empty-state").classList.add("hidden");
 
   if (blogId) {
-    // getStrapiBlog(blogId);
-    getBlog(blogId);
+    getStrapiBlog(blogId);
   } else {
     showMissingBlog();
   }
 }
 
 function getStrapiBlog(id) {
-  const apiURL = "http://localhost:1337/api/blogs?populate=coverImage";
+  const apiURL = "https://blog.prannaykedia.com/api/blogs?populate=coverImage";
   const blogsReq = new Request(apiURL);
 
   fetch(blogsReq)
@@ -51,41 +32,6 @@ function getStrapiBlog(id) {
       }
     })
     .catch((err) => console.error(err));
-}
-
-function getBlog(id) {
-  async function gql(query, variables = {}) {
-    const data = await fetch("https://api.hashnode.com/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query,
-        variables,
-      }),
-    });
-
-    return data.json();
-  }
-
-  gql(GET_USER_ARTICLES, {}).then((result) => {
-    const blogs = result.data.user.publication.posts;
-    const blog = blogs[id];
-    if (blog === null) {
-      document.getElementById("empty-state").classList.remove("hidden");
-      return;
-    } else {
-      // Generate Blog Header
-      const blogHeader = document.getElementById("blog-header");
-      blogHeader.appendChild(createBlogHeader(blog));
-
-      // Generate Blog Content
-      const blogBody = document.getElementById("blog-content");
-      blogBody.appendChild(createBlogBody(blog));
-      formatBlogBody(blogBody);
-    }
-  });
 }
 
 function createBlogHeader(blog) {
@@ -121,14 +67,14 @@ function createBlogHeader(blog) {
 
   let coverImage = document.createElement("img");
   coverImage.classList.add(...imgClasses);
-  coverImage.src = blog.coverImage;
+  coverImage.src = blog.attributes.coverImage.data.attributes.url;
 
   let cardBody = document.createElement("div");
   cardBody.classList.add(...cardBodyClasses);
 
   let blogDate = document.createElement("p");
   blogDate.classList.add(...dateClasses);
-  blogDate.innerHTML = new Date(blog.dateAdded).toLocaleDateString(
+  blogDate.innerHTML = new Date(blog.attributes.createdAt).toLocaleDateString(
     undefined,
     (options = {
       year: "numeric",
@@ -139,7 +85,7 @@ function createBlogHeader(blog) {
 
   let blogTitle = document.createElement("h2");
   blogTitle.classList.add(...titleClasses);
-  blogTitle.innerHTML = blog.title;
+  blogTitle.innerHTML = blog.attributes.title;
 
   const cardBodyElements = [blogTitle, blogDate];
   cardBody.append(...cardBodyElements);
@@ -163,15 +109,15 @@ function createBlogBody(blog) {
     "flex-col",
     "gap-4",
   ];
-  // const content = blog.attributes.contents;
+  const content = blog.attributes.contents;
 
   // For editor.js -> parse through the json and convert to HTML
   // https://medium.com/@pavittarx/rendering-json-from-editor-js-to-html-bfb615ee78c4
 
   // For markdown -> parse markdown to convert to HTML
-  const converter = new showdown.Converter();
-  const contentMarkdown = blog.contentMarkdown;
-  const content = converter.makeHtml(contentMarkdown);
+  // const converter = new showdown.Converter();
+  // const contentMarkdown = blog.contentMarkdown;
+  // const content = converter.makeHtml(contentMarkdown);
 
   // TO DO: Code, Images from Ckeditor and tables
 
@@ -283,6 +229,5 @@ function showMissingBlog() {
   return;
 }
 
+document.getElementById("empty-state").classList.add("hidden");
 checkForBlog();
-
-// Image Captions from ALT
