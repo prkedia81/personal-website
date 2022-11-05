@@ -25,7 +25,10 @@ function fetchStrapiBlogs() {
         }
       });
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+      document.getElementById("empty-state").classList.remove("hidden");
+    });
 }
 
 function createBlogCard(blog) {
