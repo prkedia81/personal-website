@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   /* font-family: "Poppins", sans-serif; */
 }
 
 body {
-    background-color: #FEFCF4;
+  background-color: #fefcf4;
 }
 
 .project .card {
-    filter: drop-shadow(-4.6463px 64.8337px 80px rgba(0, 0, 0, 0.09)) drop-shadow(-3.01149px 42.0219px 46.8519px rgba(0, 0, 0, 0.0683333)) drop-shadow(-1.78969px 24.973px 25.4815px rgba(0, 0, 0, 0.0546667)) drop-shadow(-0.92926px 12.9667px 13px rgba(0, 0, 0, 0.045)) drop-shadow(-0.378587px 5.28275px 6.51852px rgba(0, 0, 0, 0.0353333)) drop-shadow(-0.0860426px 1.20062px 3.14815px rgba(0, 0, 0, 0.0216667));
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
