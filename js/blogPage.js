@@ -16,7 +16,13 @@ function getStrapiBlog(id) {
   fetch(blogsReq)
     .then((res) => res.json())
     .then((response) => {
-      let blog = response.data[id - 1];
+      let blog = null;
+      for (let i = 0; i < response.data.length; i++) {
+        let item = response.data[i];
+        if (item.id == id) {
+          blog = item;
+        }
+      }
       if (blog == null) {
         return;
       } else {
