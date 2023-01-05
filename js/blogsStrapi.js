@@ -1,19 +1,17 @@
 function fetchStrapiBlogs() {
-  const apiURL =
-    "https://blogs.prannaykedia.com/ghost/api/content/posts?key=dcf7b4cfd75e371353afd4e888&limit=all";
+  const apiURL = "https://blog.prannaykedia.com/api/blogs?populate=coverImage";
   const blogsReq = new Request(apiURL);
 
   fetch(blogsReq)
     .then((res) => res.json())
     .then((response) => {
-      let blogs = response.posts;
+      let blogs = response.data;
       if (blogs.length == 0) {
         document.getElementById("empty-state").classList.remove("hidden");
         return;
       }
       document.getElementById("empty-state").classList.add("hidden");
-      let latestBlog = blogs[0];
-      console.log(latestBlog);
+      let latestBlog = blogs[blogs.length - 1];
       let blogList = document.getElementById("blogs");
       blogs.forEach((blog) => {
         if (blog === latestBlog) {
@@ -59,14 +57,14 @@ function createBlogCard(blog) {
 
   let coverImage = document.createElement("img");
   coverImage.classList.add(...imgClasses);
-  coverImage.src = blog.feature_image;
+  coverImage.src = blog.attributes.coverImage.data.attributes.url;
 
   let cardBody = document.createElement("div");
   cardBody.classList.add(...cardBodyClasses);
 
   let blogDate = document.createElement("p");
   blogDate.classList.add(...dateClasses);
-  blogDate.innerHTML = new Date(blog.created_at).toLocaleDateString(
+  blogDate.innerHTML = new Date(blog.attributes.createdAt).toLocaleDateString(
     undefined,
     (options = {
       year: "numeric",
@@ -77,11 +75,11 @@ function createBlogCard(blog) {
 
   let blogTitle = document.createElement("h2");
   blogTitle.classList.add(...titleClasses);
-  blogTitle.innerHTML = blog.title;
+  blogTitle.innerHTML = blog.attributes.title;
 
   let blogDescription = document.createElement("p");
   blogDescription.classList.add(...descClasses);
-  blogDescription.innerHTML = blog.custom_excerpt || blog.excerpt;
+  blogDescription.innerHTML = blog.attributes.description;
 
   const cardBodyElements = [blogDate, blogTitle, blogDescription];
   cardBody.append(...cardBodyElements);
@@ -144,14 +142,14 @@ function createLatestBlog(blog) {
 
   let coverImage = document.createElement("img");
   coverImage.classList.add(...imgClasses);
-  coverImage.src = blog.feature_image;
+  coverImage.src = blog.attributes.coverImage.data.attributes.url;
 
   let cardBody = document.createElement("div");
   cardBody.classList.add(...cardBodyClasses);
 
   let blogDate = document.createElement("p");
   blogDate.classList.add(...dateClasses);
-  blogDate.innerHTML = new Date(blog.created_at).toLocaleDateString(
+  blogDate.innerHTML = new Date(blog.attributes.createdAt).toLocaleDateString(
     undefined,
     (options = {
       year: "numeric",
@@ -162,11 +160,11 @@ function createLatestBlog(blog) {
 
   let blogTitle = document.createElement("h2");
   blogTitle.classList.add(...titleClasses);
-  blogTitle.innerHTML = blog.title;
+  blogTitle.innerHTML = blog.attributes.title;
 
   let blogDescription = document.createElement("p");
   blogDescription.classList.add(...descClasses);
-  blogDescription.innerHTML = blog.custom_excerpt || blog.excerpt;
+  blogDescription.innerHTML = blog.attributes.description;
 
   const cardBodyElements = [blogDate, blogTitle, blogDescription];
   cardBody.append(...cardBodyElements);
